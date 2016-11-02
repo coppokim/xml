@@ -1,14 +1,14 @@
 package com.epam.kim.entity;
 
-public class Products {
+public class Product {
     private byte id;
-    private int price;
     private String name;
+    private int price;
 
-    public Products(byte id, int price, String name) {
+    public Product(byte id, String name, int price) {
         this.id = id;
-        this.price = price;
         this.name = name;
+        this.price = price;
     }
 
     public byte getId() {
@@ -19,14 +19,6 @@ public class Products {
         this.id = id;
     }
 
-    public int getPrice() {
-        return price;
-    }
-
-    public void setPrice(int price) {
-        this.price = price;
-    }
-
     public String getName() {
         return name;
     }
@@ -34,4 +26,13 @@ public class Products {
     public void setName(String name) {
         this.name = name;
     }
+
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
+    }
 }
+
