@@ -22,22 +22,22 @@
             <price>7000</price>
         </product>
         <product>
-            <id>4</id>
+            <id>5</id>
             <name>shirt</name>
             <price>15000</price>
         </product>
         <product>
-            <id>5</id>
+            <id>6</id>
             <name>hoody</name>
             <price>18000</price>
         </product>
         <product>
-            <id>6</id>
+            <id>7</id>
             <name>turtleneck</name>
             <price>10000</price>
         </product>
         <product>
-            <id>7</id>
+            <id>8</id>
             <name>shoes</name>
             <price>15000</price>
         </product>
