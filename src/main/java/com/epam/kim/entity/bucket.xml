@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bucket>
+    <products>
+        <product>
+            <id>1</id>
+            <name>jeans</name>
+            <price>15000</price>
+        </product>
+        <product>
+            <id>2</id>
+            <name>sneakers</name>
+            <price>20000</price>
+        </product>
+        <product>
+            <id>3</id>
+            <name>T-shirt</name>
+            <price>8000</price>
+        </product>
+        <product>
+            <id>4</id>
+            <name>shorts</name>
+            <price>7000</price>
+        </product>
+        <product>
+            <id>4</id>
+            <name>shirt</name>
+            <price>15000</price>
+        </product>
+        <product>
+            <id>5</id>
+            <name>hoody</name>
+            <price>18000</price>
+        </product>
+        <product>
+            <id>6</id>
+            <name>turtleneck</name>
+            <price>10000</price>
+        </product>
+        <product>
+            <id>7</id>
+            <name>shoes</name>
+            <price>15000</price>
+        </product>
+    </products>
+</bucket>
