@@ -1,5 +1,6 @@
 package com.epam.kim;
 
+import com.epam.kim.parser.DOMParser;
 import com.epam.kim.parser.SaxParser;
 import org.xml.sax.SAXException;
 
@@ -20,5 +21,8 @@ public class Main {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        DOMParser.parse();
+
     }
 }
