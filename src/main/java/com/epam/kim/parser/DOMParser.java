@@ -70,7 +70,7 @@ public class DOMParser {
 
         }
 
-        //Printing the Employee list populated.
+
         for (Product prod : prodList) {
             System.out.println(prod);
         }
