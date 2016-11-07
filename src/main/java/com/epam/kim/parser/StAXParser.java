@@ -1,5 +1,8 @@
 package com.epam.kim.parser;
 
+
+import com.epam.kim.entity.Product;
+
 import javax.xml.stream.XMLEventReader;
 import javax.xml.stream.XMLInputFactory;
 import javax.xml.stream.XMLStreamConstants;
@@ -10,10 +13,14 @@ import javax.xml.stream.events.StartElement;
 import javax.xml.stream.events.XMLEvent;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
-
+import java.util.logging.Logger;
 
 public class StAXParser {
+
+    private static final Logger logger = Logger.getLogger( StAXParser.class.getName() );
     public static void parse() {
+        System.out.println("Start StAX-parsing");
+        Product prod = new Product();
         boolean bId = false;
         boolean bName = false;
         boolean bPrice = false;
@@ -30,8 +37,7 @@ public class StAXParser {
                         StartElement startElement = event.asStartElement();
                         String qName = startElement.getName().getLocalPart();
                         if (qName.equalsIgnoreCase("product")) {
-                            System.out.println("Start Element : product");
-
+                            System.out.println();
                         } else if (qName.equalsIgnoreCase("id")) {
                             bId = true;
                         } else if (qName.equalsIgnoreCase("name")) {
@@ -43,20 +49,22 @@ public class StAXParser {
                     case XMLStreamConstants.CHARACTERS:
                         Characters characters = event.asCharacters();
                         if(bId){
-                            System.out.println("Id : "
-                                    + characters.getData());
+                            prod.setId(Byte.parseByte(characters.getData()));
+                            //logger.log(Level.INFO, "Id[{0}]: ",characters.getData());
                             bId = false;
                         }
                         if(bName){
-                            System.out.println("Name: "
-                                    + characters.getData());
+                            prod.setName(characters.getData());
+                            //logger.info("Name: "+ characters.getData());
                             bName = false;
                         }
                         if(bPrice){
-                            System.out.println("Price: "
-                                    + characters.getData());
+                            prod.setPrice(Integer.parseInt(characters.getData()));
+                            //logger.info("Price: "+ characters.getData());
+                            System.out.println(prod);
                             bPrice = false;
                         }
+
                         break;
                     case  XMLStreamConstants.END_ELEMENT:
                         EndElement endElement = event.asEndElement();
@@ -72,5 +80,6 @@ public class StAXParser {
         } catch (XMLStreamException e) {
             e.printStackTrace();
         }
+        System.out.println("Stop StAX-parsing");
     }
 }

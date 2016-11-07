@@ -11,7 +11,7 @@ import java.io.File;
 
 public class DOMParser {
     public static void parse () {
-
+        System.out.println("Start DOM-parsing");
         try {
             File inputFile = new File("src\\main\\resources\\xml\\products.xml");
             DocumentBuilderFactory dbFactory
@@ -19,14 +19,13 @@ public class DOMParser {
             DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
             Document doc = dBuilder.parse(inputFile);
             doc.getDocumentElement().normalize();
-            System.out.println("Root element :"
+            System.out.println("Root element : "
                     + doc.getDocumentElement().getNodeName());
             NodeList nList = doc.getElementsByTagName("product");
             System.out.println("----------------------------");
             for (int temp = 0; temp < nList.getLength(); temp++) {
                 Node nNode = nList.item(temp);
-                System.out.println("\nCurrent Element :"
-                        + nNode.getNodeName());
+                System.out.println(nNode.getNodeName()+":");
                 if (nNode.getNodeType() == Node.ELEMENT_NODE) {
                     Element eElement = (Element) nNode;
                     System.out.println("id : "
@@ -49,6 +48,10 @@ public class DOMParser {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        System.out.println("Stop DOM-parsing");
+        System.out.println();
+        System.out.println();
+        System.out.println();
     }
 
 }

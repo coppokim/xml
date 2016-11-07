@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<products>
+<products xmlns="http://epam-xml.com/products_xml">
     <product>
         <id>1</id>
         <name>jeans</name>

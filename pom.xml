@@ -10,16 +10,6 @@
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
-        <slf4j-api.version>1.7.21</slf4j-api.version>
-        <logback-classic.version>1.1.7</logback-classic.version>
     </properties>
-    <build>
-        <sourceDirectory>src/main/java</sourceDirectory>
-        <resources>
-            <resource>
-                <directory>src/main/resources</directory>
-            </resource>
-        </resources>
-    </build>
 
 </project>

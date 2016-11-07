@@ -14,7 +14,7 @@ public class SaxParser extends DefaultHandler{
 
     @Override
     public void startDocument() {
-        System.out.println("Start parse XML...");
+        System.out.println("Start SAX-parse XML...");
     }
 
     @Override
@@ -42,7 +42,10 @@ public class SaxParser extends DefaultHandler{
 
     @Override
     public void endDocument() {
-        System.out.println("Stop parse XML...");
+        System.out.println("Stop SAX-parse XML...");
+        System.out.println();
+        System.out.println();
+        System.out.println();
     }
 }
 
