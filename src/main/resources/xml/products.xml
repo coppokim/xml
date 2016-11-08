@@ -1,43 +1,53 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<products xmlns="http://epam-xml.com/products_xml">
+<products xmlns="http://epam.com/products"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://epam.com/products http://epam.com/xsd/products.xsd">
     <product>
         <id>1</id>
         <name>jeans</name>
         <price>15000</price>
+        <manufacturer>China</manufacturer>
     </product>
     <product>
         <id>2</id>
         <name>sneakers</name>
         <price>20000</price>
+        <manufacture>Chine</manufacture>
     </product>
     <product>
         <id>3</id>
         <name>T-shirt</name>
         <price>8000</price>
+        <manufacture>Turkey</manufacture>
     </product>
     <product>
         <id>4</id>
         <name>shorts</name>
         <price>7000</price>
+        <manufacture>Italy</manufacture>
     </product>
     <product>
         <id>4</id>
         <name>shirt</name>
         <price>15000</price>
+        <manufacture>China</manufacture>
     </product>
     <product>
         <id>5</id>
         <name>hoody</name>
         <price>18000</price>
+        <manufacture>USA</manufacture>
     </product>
     <product>
         <id>6</id>
         <name>turtleneck</name>
         <price>10000</price>
+        <manufacture>China</manufacture>
     </product>
     <product>
         <id>7</id>
         <name>shoes</name>
         <price>15000</price>
+        <manufacture>China</manufacture>
     </product>
 </products>

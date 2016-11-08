@@ -4,11 +4,17 @@ public class Product {
     private byte id;
     private String name;
     private int price;
+    private String manufacturer;
 
-    public Product(byte id, String name, int price) {
+    public Product(byte id, String name, int price, String manufacturer) {
         this.id = id;
         this.name = name;
         this.price = price;
+        this.manufacturer = manufacturer;
+    }
+
+    public Product() {
+
     }
 
     @Override
@@ -17,11 +23,16 @@ public class Product {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", price=" + price +
+                ", manufacturer='" + manufacturer + '\'' +
                 '}';
     }
 
-    public Product() {
+    public String getManufacturer() {
+        return manufacturer;
+    }
 
+    public void setManufacturer(String manufacturer) {
+        this.manufacturer = manufacturer;
     }
 
     public byte getId() {

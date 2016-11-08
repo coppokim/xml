@@ -3,10 +3,13 @@ package com.epam.kim.parser;
 import com.epam.kim.entity.Product;
 import org.xml.sax.Attributes;
 import org.xml.sax.helpers.DefaultHandler;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class SaxParser extends DefaultHandler{
     Product prod = new Product();
     String thisElement = "";
+    private static final Logger log = LoggerFactory.getLogger(SaxParser.class);
 
     public Product getResult(){
         return prod;

@@ -3,7 +3,9 @@
   <xs:element name="bucket" type="bucketType"/>
   <xs:complexType name="bucketType">
     <xs:sequence>
-      <xs:element ref="prod:products" xmlns:prod="http://epam-xml.com/products_xml"/>
+        <xs:element ref="prod:products" xmlns:prod="http://epam.com/products"
+                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                    xsi:schemaLocation="http://epam.com/products "/>
     </xs:sequence>
   </xs:complexType>
 </xs:schema>
