@@ -1,9 +1,18 @@
 package com.epam.kim.entity;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement
 public class Product {
+
+
+
     private int id;
+
     private String name;
+
     private int price;
+
     private String manufacturer;
 
     public Product(int id, String name, int price, String manufacturer) {

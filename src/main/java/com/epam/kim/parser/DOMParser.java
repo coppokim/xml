@@ -15,7 +15,7 @@ import java.io.File;
 
 public class DOMParser {
     private static final Logger log = LoggerFactory.getLogger(DOMParser.class);
-    public static void parse () {
+    public static Bucket parse () {
         Product prod;
         Bucket bucket = new Bucket();
         log.debug("Start DOM-parsing");
@@ -49,6 +49,7 @@ public class DOMParser {
         }
 
         log.debug("Stop DOM-parsing");
+        return bucket;
     }
 
 }

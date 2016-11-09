@@ -30,7 +30,6 @@ public class SaxParser extends DefaultHandler{
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
 
 

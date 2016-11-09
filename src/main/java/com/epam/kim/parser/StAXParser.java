@@ -20,7 +20,7 @@ import java.io.FileReader;
 public class StAXParser {
 
     private static final Logger log = org.slf4j.LoggerFactory.getLogger(StAXParser.class);
-    public static void parse() {
+    public static Bucket parse() {
         log.debug("Start StAX-parsing");
         Product prod = new Product();
         Bucket bucket = new Bucket();
@@ -92,5 +92,7 @@ public class StAXParser {
         }
 
         log.debug("Stop StAX-parsing");
+        return bucket;
     }
+
 }
