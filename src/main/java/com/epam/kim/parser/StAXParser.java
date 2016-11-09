@@ -2,6 +2,8 @@ package com.epam.kim.parser;
 
 
 import com.epam.kim.entity.Product;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.xml.stream.XMLEventReader;
 import javax.xml.stream.XMLInputFactory;
@@ -13,13 +15,13 @@ import javax.xml.stream.events.StartElement;
 import javax.xml.stream.events.XMLEvent;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.util.logging.Logger;
+
 
 public class StAXParser {
-
-    private static final Logger logger = Logger.getLogger( StAXParser.class.getName() );
+    private static final Logger log = LoggerFactory.getLogger(StAXParser.class);
     public static void parse() {
-        System.out.println("Start StAX-parsing");
+
+        log.debug("Start StAX-parsing");
         Product prod = new Product();
         boolean bId = false;
         boolean bName = false;
@@ -80,6 +82,6 @@ public class StAXParser {
         } catch (XMLStreamException e) {
             e.printStackTrace();
         }
-        System.out.println("Stop StAX-parsing");
+        log.debug("Stop StAX-parsing");
     }
 }
