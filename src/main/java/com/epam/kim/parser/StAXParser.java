@@ -1,9 +1,9 @@
 package com.epam.kim.parser;
 
 
+import com.epam.kim.entity.Bucket;
 import com.epam.kim.entity.Product;
 import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import javax.xml.stream.XMLEventReader;
 import javax.xml.stream.XMLInputFactory;
@@ -18,14 +18,17 @@ import java.io.FileReader;
 
 
 public class StAXParser {
-    private static final Logger log = LoggerFactory.getLogger(StAXParser.class);
-    public static void parse() {
 
+    private static final Logger log = org.slf4j.LoggerFactory.getLogger(StAXParser.class);
+    public static void parse() {
         log.debug("Start StAX-parsing");
         Product prod = new Product();
+        Bucket bucket = new Bucket();
+        String qName = "";
         boolean bId = false;
         boolean bName = false;
         boolean bPrice = false;
+        boolean bManufacturer = false;
         try {
             XMLInputFactory factory = XMLInputFactory.newInstance();
             XMLEventReader eventReader =
@@ -37,42 +40,44 @@ public class StAXParser {
                 switch(event.getEventType()){
                     case XMLStreamConstants.START_ELEMENT:
                         StartElement startElement = event.asStartElement();
-                        String qName = startElement.getName().getLocalPart();
+                        qName = startElement.getName().getLocalPart();
+
                         if (qName.equalsIgnoreCase("product")) {
-                            System.out.println();
+
                         } else if (qName.equalsIgnoreCase("id")) {
                             bId = true;
                         } else if (qName.equalsIgnoreCase("name")) {
                             bName = true;
                         } else if (qName.equalsIgnoreCase("price")) {
                             bPrice = true;
+                        }else if (qName.equalsIgnoreCase("manufacturer")){
+                            bManufacturer = true;
                         }
                         break;
                     case XMLStreamConstants.CHARACTERS:
                         Characters characters = event.asCharacters();
                         if(bId){
                             prod.setId(Byte.parseByte(characters.getData()));
-                            //logger.log(Level.INFO, "Id[{0}]: ",characters.getData());
                             bId = false;
                         }
                         if(bName){
                             prod.setName(characters.getData());
-                            //logger.info("Name: "+ characters.getData());
                             bName = false;
                         }
                         if(bPrice){
                             prod.setPrice(Integer.parseInt(characters.getData()));
-                            //logger.info("Price: "+ characters.getData());
-                            System.out.println(prod);
                             bPrice = false;
+                        }
+                        if (bManufacturer){
+                            prod.setManufacturer(characters.getData());
+                            bManufacturer=false;
                         }
 
                         break;
                     case  XMLStreamConstants.END_ELEMENT:
                         EndElement endElement = event.asEndElement();
-                        if(endElement.getName().getLocalPart().equalsIgnoreCase("student")){
-                            System.out.println("End Element : student");
-                            System.out.println();
+                        if(endElement.getName().getLocalPart().equalsIgnoreCase("product")){
+                            bucket.addProduct(new Product(prod.getId(),prod.getName(),prod.getPrice(),prod.getManufacturer()));
                         }
                         break;
                 }
@@ -82,6 +87,10 @@ public class StAXParser {
         } catch (XMLStreamException e) {
             e.printStackTrace();
         }
+        for (Product product : bucket.getProductList()) {
+            log.debug(product.toString());
+        }
+
         log.debug("Stop StAX-parsing");
     }
 }

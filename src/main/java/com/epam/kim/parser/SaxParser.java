@@ -56,7 +56,7 @@ public class SaxParser extends DefaultHandler{
 
         switch (thisElement){
             case "id":
-                prod.setId(new Byte(new String(ch, start, length)));
+                prod.setId(new Integer(new String(ch, start, length)));
                 break;
             case "name":
                 prod.setName(new String(ch, start, length));

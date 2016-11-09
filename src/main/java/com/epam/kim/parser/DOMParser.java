@@ -34,7 +34,7 @@ public class DOMParser {
                 if (nNode.getNodeType() == Node.ELEMENT_NODE) {
                     prod = new Product();
                     Element eElement = (Element) nNode;
-                    prod.setId(Byte.parseByte(eElement.getElementsByTagName("id").item(0).getTextContent()));
+                    prod.setId(Integer.parseInt(eElement.getElementsByTagName("id").item(0).getTextContent()));
                     prod.setName(eElement.getElementsByTagName("name").item(0).getTextContent());
                     prod.setPrice(Integer.parseInt(eElement.getElementsByTagName("price").item(0).getTextContent()));
                     prod.setManufacturer(eElement.getElementsByTagName("manufacturer").item(0).getTextContent());
