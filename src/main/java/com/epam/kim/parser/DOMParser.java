@@ -1,5 +1,7 @@
 package com.epam.kim.parser;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -10,8 +12,9 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import java.io.File;
 
 public class DOMParser {
+    private static final Logger log = LoggerFactory.getLogger(SaxParser.class);
     public static void parse () {
-        System.out.println("Start DOM-parsing");
+        log.debug("Start DOM-parsing");
         try {
             File inputFile = new File("src\\main\\resources\\xml\\products.xml");
             DocumentBuilderFactory dbFactory
@@ -19,10 +22,10 @@ public class DOMParser {
             DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
             Document doc = dBuilder.parse(inputFile);
             doc.getDocumentElement().normalize();
-            System.out.println("Root element : "
+            log.debug("Root element : "
                     + doc.getDocumentElement().getNodeName());
             NodeList nList = doc.getElementsByTagName("product");
-            System.out.println("----------------------------");
+            log.debug("----------------------------");
             for (int temp = 0; temp < nList.getLength(); temp++) {
                 Node nNode = nList.item(temp);
                 System.out.println(nNode.getNodeName()+":");

@@ -1,23 +1,45 @@
 package com.epam.kim.parser;
 
+import com.epam.kim.entity.Bucket;
 import com.epam.kim.entity.Product;
-import org.xml.sax.Attributes;
-import org.xml.sax.helpers.DefaultHandler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.xml.sax.Attributes;
+import org.xml.sax.SAXException;
+import org.xml.sax.helpers.DefaultHandler;
+
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.parsers.SAXParser;
+import javax.xml.parsers.SAXParserFactory;
+import java.io.File;
+import java.io.IOException;
 
 public class SaxParser extends DefaultHandler{
-    Product prod = new Product();
-    String thisElement = "";
     private static final Logger log = LoggerFactory.getLogger(SaxParser.class);
+    Product prod = new Product();
+    Bucket  bucket = new Bucket();
+    String thisElement = "";
 
-    public Product getResult(){
-        return prod;
+    public static void parse() throws SAXException, ParserConfigurationException {
+
+        try {
+            SAXParserFactory factory = SAXParserFactory.newInstance();
+            SAXParser parser = factory.newSAXParser();
+            SaxParser saxp = new SaxParser();
+            parser.parse(new File("src\\main\\resources\\xml\\products.xml"), saxp);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
+
+
+
+
 
     @Override
     public void startDocument() {
-        System.out.println("Start SAX-parse XML...");
+        log.debug("Start SAX-parse XML...");
     }
 
     @Override
@@ -31,24 +53,33 @@ public class SaxParser extends DefaultHandler{
     }
     @Override
     public void characters(char[] ch, int start, int length)  {
-        if (thisElement.equals("id")) {
-            prod.setId(new Byte(new String(ch, start, length)));
-        }
-        if (thisElement.equals("name")) {
-            prod.setName(new String(ch, start, length));
-        }
-        if (thisElement.equals("price")) {
-            prod.setPrice(new Integer(new String(ch, start, length)));
-            System.out.println(prod);
+
+        switch (thisElement){
+            case "id":
+                prod.setId(new Byte(new String(ch, start, length)));
+                break;
+            case "name":
+                prod.setName(new String(ch, start, length));
+                break;
+            case "price":
+                prod.setPrice(new Integer(new String(ch, start, length)));
+                break;
+            case "manufacturer":
+                prod.setManufacturer(new String(ch, start, length));
+                Product product = new Product(prod.getId(),prod.getName(),prod.getPrice(),prod.getManufacturer());
+                bucket.addProduct(product);
+                break;
+
         }
     }
 
     @Override
     public void endDocument() {
-        System.out.println("Stop SAX-parse XML...");
-        System.out.println();
-        System.out.println();
-        System.out.println();
+        for (Product product : bucket.getProductList()) {
+            log.debug(product.toString());
+        }
+        log.debug("Stop SAX-parse XML...");
     }
+
 }
 

@@ -1,9 +1,10 @@
 package com.epam.kim.entity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Bucket {
-    private List<Product> productList;
+    private List<Product> productList = new ArrayList<>();
     private int id;
     private int buyerId;
 
@@ -13,10 +14,13 @@ public class Bucket {
     }
 
     public Bucket(List<Product> productList, int id, int buyerId) {
-
         this.productList = productList;
         this.id = id;
         this.buyerId = buyerId;
+    }
+
+    public void addProduct(Product product){
+        this.productList.add(product);
     }
 
     public void setProductList(List<Product> productList) {
@@ -43,6 +47,7 @@ public class Bucket {
     public List<Product> getProductList() {
         return productList;
     }
+
 
     @Override
     public String toString() {
