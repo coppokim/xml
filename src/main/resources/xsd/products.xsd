@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://epam.com/products" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="products" type="prod:productsType" xmlns:prod="http://epam.com/products"/>
+  <xs:complexType name="productType">
+    <xs:sequence>
+      <xs:element name="id">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="1"/>
+            <xs:enumeration value="2"/>
+            <xs:enumeration value="3"/>
+            <xs:enumeration value="4"/>
+            <xs:enumeration value="5"/>
+            <xs:enumeration value="6"/>
+            <xs:enumeration value="7"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="name">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="jeans"/>
+            <xs:enumeration value="sneakers"/>
+            <xs:enumeration value="T-shirt"/>
+            <xs:enumeration value="shorts"/>
+            <xs:enumeration value="shirt"/>
+            <xs:enumeration value="hoody"/>
+            <xs:enumeration value="turtleneck"/>
+            <xs:enumeration value="shoes"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="price">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="15000"/>
+            <xs:enumeration value="20000"/>
+            <xs:enumeration value="8000"/>
+            <xs:enumeration value="7000"/>
+            <xs:enumeration value="18000"/>
+            <xs:enumeration value="10000"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element type="xs:string" name="manufacturer" minOccurs="0"/>
+      <xs:element name="manufacture" minOccurs="0">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="Chine"/>
+            <xs:enumeration value="Turkey"/>
+            <xs:enumeration value="Italy"/>
+            <xs:enumeration value="China"/>
+            <xs:enumeration value="USA"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="productsType">
+    <xs:sequence>
+      <xs:element type="prod:productType" name="product" maxOccurs="unbounded" minOccurs="0" xmlns:prod="http://epam.com/products"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
